@@ -1,0 +1,85 @@
+{
+  "name": "dice-roll",
+  "version": "1.0.0",
+  "description": "roll dice app",
+  "main": "main.js",
+  "repository": "git@github.com:NIHILncunia/DiceRoll.git",
+  "build": {
+    "productName": "DiceRoll",
+    "appId": "com.nihil.DiceRoll",
+    "asar": true,
+    "protocols": {
+      "name": "DiceRoll",
+      "schemes": [
+        "DiceRoll"
+      ]
+    },
+    "win": {
+      "target": [
+        "zip",
+        "nsis"
+      ],
+      "icon": "./assets/icons/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "installerIcon": "./assets/icons/icon.ico",
+      "installerHeaderIcon": "./assets/icons/icon.ico",
+      "deleteAppDataOnUninstall": true,
+      "installerLanguages": [
+        "en_US",
+        "ko_KR"
+      ],
+      "language": "1042"
+    },
+    "directories": {
+      "buildResources": "./assets",
+      "output": "./dist/",
+      "app": "."
+    }
+  },
+  "scripts": {
+    "dev": "webpack --config webpack.common.js",
+    "prod": "webpack --config webpack.prod.js",
+    "watch": "webpack --config webpack.common.js --watch",
+    "start": "electron .",
+    "postinstall": "electron-builder install-app-deps",
+    "build:osx": "electron-builder --mac",
+    "build:linux": "npm run build:linux32 && npm run build:linux64",
+    "build:linux32": "electron-builder --linux --ia32",
+    "build:linux64": "electron-builder --linux --x64",
+    "build:win": "npm run build:win32 && npm run build:win64",
+    "build:win32": "electron-builder --win --ia32",
+    "build:win64": "electron-builder --win --x64"
+  },
+  "keywords": [],
+  "author": "NIHILncunia",
+  "license": "MIT",
+  "dependencies": {
+    "os-utils": "0.0.14",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
+    "styled-components": "^5.2.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.3",
+    "@babel/preset-env": "^7.12.1",
+    "@babel/preset-react": "^7.12.1",
+    "babel-loader": "^8.1.0",
+    "css-loader": "^5.0.0",
+    "electron": "^10.1.4",
+    "electron-builder": "^22.9.1",
+    "electron-reload": "^1.5.0",
+    "eslint": "^7.11.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-react": "^7.21.4",
+    "eslint-plugin-react-hooks": "^4.1.2",
+    "react-devtools-electron": "^4.7.0",
+    "sass": "^1.27.0",
+    "sass-loader": "^10.0.3",
+    "style-loader": "^2.0.0",
+    "webpack": "^5.1.3",
+    "webpack-cli": "^4.0.0"
+  }
+}
