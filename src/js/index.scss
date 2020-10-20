@@ -1,0 +1,201 @@
+// 초기화
+@import url(https://fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+* {
+  padding: 0px;
+  margin: 0px auto;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+// 상단 주사위
+#topdicebox {
+  padding: 10px;
+  max-width: calc(100% - 20px);
+  display: block;
+  overflow: hidden;
+
+  & .topdices:nth-child(1) {
+    border-radius: 10px 0px 0px 10px;
+  }
+
+  & .topdices:nth-last-child(1) {
+    border-radius: 0px 10px 10px 0px;
+  }
+
+  & .topdices {
+    display: block;
+    float: left;
+    text-align: center;
+    padding: 5px;
+    margin: 1px;
+    width: calc(12.5% - 2px);
+    font-size: 14pt;
+    border: 1px solid #333333;
+    background: #333333;
+    color: #eeeeee;
+
+    &:hover {
+      color: #333333;
+      background: #eeeeee;
+    }
+
+    &:active {
+      color: #333333;
+      background: #bbbbbb;
+    }
+  }
+}
+
+// 중앙 주사위 입력
+#diceform {
+  margin-bottom: 20px;
+  padding: 10px;
+  width: calc(100% - 20px);
+
+  & input:nth-child(1) {
+    border-radius: 10px 10px 0px 0px;
+  }
+
+  & input {
+    text-align: center;
+    padding: 10px 5px;
+    display: block;
+    font-size: 20pt;
+    width: calc(100% - 12px);
+    margin-bottom: 5px;
+    border: 1px solid #333333;
+
+    & ::placeholder {
+      color: #888888;
+    }
+  }
+
+  & button {
+    padding: 5px;
+    background: #333333;
+    color: #eeeeee;
+    border: 1px solid #333333;
+    width: 100%;
+    font-size: 20pt;
+    border-radius: 0px 0px 10px 10px;
+
+    &:hover {
+      color: #333333;
+      background: #eeeeee;
+    }
+
+    &:active {
+      color: #333333;
+      background: #bbbbbb;
+    }
+  }
+}
+
+// 하단 주사위 결과 리스트
+#diceresultlist {
+  padding: 10px;
+
+  & .diceresultitem:nth-child(1) {
+    border-top: none;
+    margin-top: 0px;
+  }
+
+  & .diceresultitem {
+    margin-top: 20px;
+    border-top: 2px dotted #888888;
+    padding-top: 10px;
+
+    & .itemcontent {
+      display: flex;
+
+      & .itemnumber {
+        font-size: 24pt;
+        align-items: center;
+        border-radius: 10px 0px 0px 10px;
+        padding-right: 5px;
+        display: flex;
+        font-weight: 900;
+
+        & p {
+          color: #eeeeee;
+          background: #333333;
+          padding: 5px;
+          border-radius: 50px;
+          margin-right: 5px;
+        }
+      }
+
+      & .itemdice {
+        font-size: 18pt;
+        align-items: center;
+        border-radius: 0px 10px 10px 0px;
+        padding-right: 10px;
+        margin-right: 10px;
+        display: flex;
+        font-weight: 900;
+        color: #333333;
+      }
+
+      & .itemdetail {
+        flex: 1 1 0;
+
+        & .totaldice {
+          text-align: justify;
+          font-size: 24pt;
+          font-weight: 900;
+          color: #333333;
+        }
+
+        & .dicedetail {
+          text-align: justify;
+          word-break:break-all;
+          margin-top: 5px;
+          font-size: 14pt;
+
+          & p {
+            padding: 10px;
+            border-radius: 10px;
+            background: #eeeeee;
+            border: 1px solid #333333;
+
+            & .normal,
+            & .mod {
+              color: #eeeeee;
+              margin-right: 2px;
+              padding: 5px 10px;
+              background: #333333;
+              border-radius: 10px;
+              display: inline-block;
+            }
+
+            & .critical {
+              color: #eeeeee;
+              margin-right: 2px;
+              padding: 5px 10px;
+              background: #147500;
+              border-radius: 10px;
+              display: inline-block;
+            }
+
+            & .fumble {
+              color: #eeeeee;
+              margin-right: 2px;
+              padding: 5px 10px;
+              background: #a80000;
+              border-radius: 10px;
+              display: inline-block;
+            }
+          }
+        }
+      }
+    }
+
+    & .itemmessage {
+      text-align: justify;
+      font-size: 14pt;
+      margin-top: 10px;
+      color: #333333;
+      border-radius: 10px;
+    }
+  }
+}
