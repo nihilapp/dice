@@ -71,6 +71,10 @@ const RollDiceForm = ({setResults, id, setId}) => {
       dicebox.push(roll);
     }
 
+    if (dices == 1) {
+      newValue = newValue.slice(dicestringNumber, newValue.length);
+    }
+
     const dicetotal = dicebox.reduce((pre, crr, index, arr) => { return pre + crr; }, 0);
 
     setId(id + 1);
@@ -96,8 +100,8 @@ const RollDiceForm = ({setResults, id, setId}) => {
 
   return (
     <form id='diceform' onSubmit={onSubmitRollDice}>
-      <input type='text' placeholder='<개수><D 혹은 d><주사위면 수>를 입력하세요.' value={value} ref={inputRef} onChange={onChangeInputDice} />
-      <input type="text" placeholder='값에 더할 수를 입력하세요. (선택)' value={mod} ref={inputRef} onChange={onChangeInputMod} />
+      <input type='text' placeholder='<개수><D 혹은 d><주사위면 수>' value={value} ref={inputRef} onChange={onChangeInputDice} />
+      <input type="text" placeholder='더할 값' value={mod} ref={inputRef} onChange={onChangeInputMod} />
       <button type='submit'>굴리기</button>
     </form>
   );

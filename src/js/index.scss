@@ -1,6 +1,83 @@
 // 초기화
 @import url(https://fonts.googleapis.com/earlyaccess/notosanskr.css);
 
+$biggest-size: 24pt;
+$big-size: 20pt;
+$middle-size: 18pt;
+$msmall-size: 16pt;
+$small-size: 14pt;
+$smallest-size: 12pt;
+
+@media (min-width: 701px) {
+  #topdicebox {
+    & .topdices:nth-child(1) {border-radius: 10px 0px 0px 10px;}
+    & .topdices:nth-last-child(1) {border-radius: 0px 10px 10px 0px;}
+    & .topdices {
+      font-size: $small-size;
+      width: calc(12.5% - 2px);
+    }
+  }
+  #diceform {
+    & input {font-size: $big-size;}
+    & button {font-size: $big-size;}
+  }
+  #diceresultlist {
+    & .diceresultitem {
+      & .itemcontent {
+        & .itemnumber {font-size: $biggest-size;}
+        & .itemdice {font-size: $middle-size;}
+        & .itemdetail {
+          & .totaldice {font-size: $biggest-size;}
+          & .dicedetail {font-size: $small-size;}
+        }
+      }
+      & .itemmessage {font-size: $small-size;}
+    }
+  }
+}
+
+@media (min-width: 401px) and (max-width: 700px) {
+  #topdicebox {
+    & .topdices:nth-child(1) {border-radius: 10px 0px 0px 10px;}
+    & .topdices:nth-last-child(1) {border-radius: 0px 10px 10px 0px;}
+    & .topdices {
+      font-size: $smallest-size;
+      width: calc(12.5% - 2px);
+    }
+  }
+  #diceform {
+    & input {font-size: $middle-size;}
+    & button {font-size: $middle-size;}
+  }
+  #diceresultlist {
+    & .diceresultitem {
+      & .itemcontent {
+        & .itemnumber {font-size: $big-size;}
+        & .itemdice {font-size: $msmall-size;}
+        & .itemdetail {
+          & .totaldice {font-size: $big-size;}
+          & .dicedetail {font-size: $smallest-size;}
+        }
+      }
+      & .itemmessage {font-size: $smallest-size;}
+    }
+  }
+}
+
+@media (min-width: 101px) and (max-width: 400px) {
+  #topdicebox {
+    & .topdices:nth-child(1) {border-radius: 10px 0px 0px 0px;}
+    & .topdices:nth-child(4) {border-radius: 0px 10px 0px 0px;}
+    & .topdices:nth-child(5) {border-radius: 0px 0px 0px 10px;}
+    & .topdices:nth-child(8) {border-radius: 0px 0px 10px 0px;}
+    & .topdices {width: calc(25% - 2px);}
+  }
+  #diceform {
+    & input {font-size: $msmall-size;}
+    & button {font-size: $msmall-size;}
+  }
+}
+
 * {
   padding: 0px;
   margin: 0px auto;
@@ -14,22 +91,12 @@
   display: block;
   overflow: hidden;
 
-  & .topdices:nth-child(1) {
-    border-radius: 10px 0px 0px 10px;
-  }
-
-  & .topdices:nth-last-child(1) {
-    border-radius: 0px 10px 10px 0px;
-  }
-
   & .topdices {
     display: block;
     float: left;
     text-align: center;
     padding: 5px;
     margin: 1px;
-    width: calc(12.5% - 2px);
-    font-size: 14pt;
     border: 1px solid #333333;
     background: #333333;
     color: #eeeeee;
@@ -44,6 +111,19 @@
       background: #bbbbbb;
     }
   }
+}
+
+// 설명칸
+#decription {
+  padding: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background: #333333;
+  color: #eeeeee;
+  text-align: justify;
+  border-radius: 10px;
 }
 
 // 중앙 주사위 입력
@@ -60,7 +140,6 @@
     text-align: center;
     padding: 10px 5px;
     display: block;
-    font-size: 20pt;
     width: calc(100% - 12px);
     margin-bottom: 5px;
     border: 1px solid #333333;
@@ -76,7 +155,6 @@
     color: #eeeeee;
     border: 1px solid #333333;
     width: 100%;
-    font-size: 20pt;
     border-radius: 0px 0px 10px 10px;
 
     &:hover {
@@ -90,6 +168,7 @@
     }
   }
 }
+
 
 // 하단 주사위 결과 리스트
 #diceresultlist {
@@ -109,7 +188,6 @@
       display: flex;
 
       & .itemnumber {
-        font-size: 24pt;
         align-items: center;
         border-radius: 10px 0px 0px 10px;
         padding-right: 5px;
@@ -126,7 +204,6 @@
       }
 
       & .itemdice {
-        font-size: 18pt;
         align-items: center;
         border-radius: 0px 10px 10px 0px;
         padding-right: 10px;
@@ -141,7 +218,6 @@
 
         & .totaldice {
           text-align: justify;
-          font-size: 24pt;
           font-weight: 900;
           color: #333333;
         }
@@ -150,7 +226,6 @@
           text-align: justify;
           word-break:break-all;
           margin-top: 5px;
-          font-size: 14pt;
 
           & p {
             padding: 10px;
@@ -192,7 +267,6 @@
 
     & .itemmessage {
       text-align: justify;
-      font-size: 14pt;
       margin-top: 10px;
       color: #333333;
       border-radius: 10px;

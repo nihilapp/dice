@@ -34,7 +34,10 @@ app.on('ready', () => {
   // win.loadURL('https://www.naver.com')
   // 파일을 불러와서 화면에 로드한다. 주소도 로드할 수 있다.
 
-  // win.webContents.openDevTools();
+  if (isDev) {
+    win.webContents.openDevTools();
+  }
+  
   win.setMenu(null);
 });
 

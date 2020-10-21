@@ -1,5 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import RollDiceForm from './Components/RollDiceForm';
+import RollDecription from './Components/RollDecription';
 
 const suffixs = ['2', '4', '6', '8', '10', '12', '20', '100',];
 
@@ -43,15 +44,13 @@ const App = () => {
 
   return (
     <>
-      {/* 기본적인 주사위 */}
       <div id='topdicebox'>
         {suffixs.map((sfx) => (
           <button key={`${results.id}-${sfx}`} className='topdices' value={`D${sfx}`} onClick={onClickRollDices}>D{sfx}</button>
         ))}
       </div>
-      {/* 주사위 자율입력 */}
+      <RollDecription />
       <RollDiceForm setResults={setResults} id={id} setId={setId} />
-      {/* 주사위 결과 리스트(아래에서 위로) */}
       <div id='diceresultlist'>
         {results.slice().reverse().map((resultList) => (
           <div key={`${resultList.id}-${resultList.TotalDice}`} className='diceresultitem'>
@@ -60,16 +59,18 @@ const App = () => {
               <div className='itemdice'><p>{resultList.dicename}</p></div>
               <div className='itemdetail'>
                 <div className='totaldice'><p>{resultList.TotalDice}</p></div>
-                <div className='dicedetail'><p>{resultList.dicedetail}{
-                  resultList.mod == '' ? '' : ' + '
-                }{resultList.mod}</p></div>
+                <div className='dicedetail'>
+                  <p>
+                    {resultList.dicedetail}
+                    {resultList.mod == '' ? '' : ' + '}
+                    {resultList.mod}
+                  </p>
+                </div>
               </div>
             </div>
           </div>
         ))}
       </div>
-      {/* 리스트의 각 항목 */}
-      {/* 굴린 주사위 / 총합 / 개별값 */}
     </>
   );
 };
