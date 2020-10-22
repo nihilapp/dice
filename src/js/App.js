@@ -10,10 +10,8 @@ const App = () => {
 
   const [results, setResults] = useState([{
     id: 0,
-    dicename: '-',
     TotalDice: '주사위를 굴리세요',
-    dicedetail: ['주사위를 굴리세요'],
-    mod: '',
+    dicedetails: '',
   }]);
 
   const onClickRollDices = useCallback((e) => {
@@ -32,13 +30,17 @@ const App = () => {
     }
 
     const rolltotalspan = <span key={`${id}-${rolltotaldice}`} className={classname}>{rolltotaldice}</span>;
+    const rolldicedetail = (
+      <div key={`${id}`} className='rolldetail'>
+        <div className='itemdice'><p>{dice} ▶</p></div>
+        <div key={`${id}-${dice}-${rolltotaldice}`} className='dicedetail'><p>{rolltotalspan}</p></div>
+      </div>
+    );
 
     setResults((prevState) => [...prevState, {
       id: id,
-      dicename: dice,
       TotalDice: rolltotaldice,
-      dicedetail: [rolltotalspan],
-      mod: '',
+      dicedetails: [rolldicedetail],
     }]);
   }, [id]);
 
@@ -55,17 +57,12 @@ const App = () => {
         {results.slice().reverse().map((resultList) => (
           <div key={`${resultList.id}-${resultList.TotalDice}`} className='diceresultitem'>
             <div className='itemcontent'>
-              <div className='itemnumber'><p>{resultList.id}.</p></div>
-              <div className='itemdice'><p>{resultList.dicename}</p></div>
-              <div className='itemdetail'>
+              <div className='contenttitle'>
+                <div className='itemnumber'><p>{resultList.id}.</p></div>
                 <div className='totaldice'><p>{resultList.TotalDice}</p></div>
-                <div className='dicedetail'>
-                  <p>
-                    {resultList.dicedetail}
-                    {resultList.mod == '' ? '' : ' + '}
-                    {resultList.mod}
-                  </p>
-                </div>
+              </div>
+              <div className='itemdetail'>
+                <div className='dicedetails'>{resultList.dicedetails}</div>
               </div>
             </div>
           </div>

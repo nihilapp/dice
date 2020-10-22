@@ -17,6 +17,9 @@ $smallest-size: 12pt;
       width: calc(12.5% - 2px);
     }
   }
+  #decription {
+    font-size: $small-size;
+  }
   #diceform {
     & input {font-size: $big-size;}
     & button {font-size: $big-size;}
@@ -24,14 +27,17 @@ $smallest-size: 12pt;
   #diceresultlist {
     & .diceresultitem {
       & .itemcontent {
-        & .itemnumber {font-size: $biggest-size;}
+        & .contenttitle {
+          & .itemnumber {font-size: $biggest-size;}
+          & .totaldice {font-size: $biggest-size;}
+        }
         & .itemdice {font-size: $middle-size;}
         & .itemdetail {
-          & .totaldice {font-size: $biggest-size;}
-          & .dicedetail {font-size: $small-size;}
+          & .dicedetails {
+            & .dicedetail {font-size: $small-size;}
+          }
         }
       }
-      & .itemmessage {font-size: $small-size;}
     }
   }
 }
@@ -45,6 +51,9 @@ $smallest-size: 12pt;
       width: calc(12.5% - 2px);
     }
   }
+  #decription {
+    font-size: $smallest-size;
+  }
   #diceform {
     & input {font-size: $middle-size;}
     & button {font-size: $middle-size;}
@@ -52,14 +61,17 @@ $smallest-size: 12pt;
   #diceresultlist {
     & .diceresultitem {
       & .itemcontent {
-        & .itemnumber {font-size: $big-size;}
+        & .contenttitle {
+          & .itemnumber {font-size: $biggest-size;}
+          & .totaldice {font-size: $biggest-size;}
+        }
         & .itemdice {font-size: $msmall-size;}
         & .itemdetail {
-          & .totaldice {font-size: $big-size;}
-          & .dicedetail {font-size: $smallest-size;}
+          & .dicedetails {
+            & .dicedetail {font-size: $smallest-size;}
+          }
         }
       }
-      & .itemmessage {font-size: $smallest-size;}
     }
   }
 }
@@ -72,9 +84,12 @@ $smallest-size: 12pt;
     & .topdices:nth-child(8) {border-radius: 0px 0px 10px 0px;}
     & .topdices {width: calc(25% - 2px);}
   }
+  #decription {
+    font-size: $smallest-size;
+  }
   #diceform {
-    & input {font-size: $msmall-size;}
-    & button {font-size: $msmall-size;}
+    & input {font-size: $small-size;}
+    & button {font-size: $small-size;}
   }
 }
 
@@ -186,90 +201,101 @@ $smallest-size: 12pt;
 
     & .itemcontent {
       display: flex;
+      flex-direction: column;
 
-      & .itemnumber {
-        align-items: center;
-        border-radius: 10px 0px 0px 10px;
-        padding-right: 5px;
+      & .contenttitle {
         display: flex;
-        font-weight: 900;
+        flex-direction: row;
+        width: 100%;
 
-        & p {
-          color: #eeeeee;
-          background: #333333;
-          padding: 5px;
-          border-radius: 50px;
-          margin-right: 5px;
+        & .itemnumber {
+          border-radius: 10px 0px 0px 10px;
+          padding-right: 5px;
+          font-weight: 900;
+  
+          & p {
+            color: #eeeeee;
+            background: #333333;
+            padding: 0px 5px;
+            border-radius: 10px;
+            margin-right: 5px;
+          }
         }
-      }
-
-      & .itemdice {
-        align-items: center;
-        border-radius: 0px 10px 10px 0px;
-        padding-right: 10px;
-        margin-right: 10px;
-        display: flex;
-        font-weight: 900;
-        color: #333333;
-      }
-
-      & .itemdetail {
-        flex: 1 1 0;
 
         & .totaldice {
           text-align: justify;
           font-weight: 900;
           color: #333333;
+          flex: 1 1 0;
         }
+      }
 
-        & .dicedetail {
-          text-align: justify;
-          word-break:break-all;
-          margin-top: 5px;
+      & .itemdetail {
+        width: 100%;
 
-          & p {
-            padding: 10px;
-            border-radius: 10px;
-            background: #eeeeee;
-            border: 1px solid #333333;
+        & .dicedetails {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
 
-            & .normal,
-            & .mod {
-              color: #eeeeee;
-              margin-right: 2px;
-              padding: 5px 10px;
-              background: #333333;
-              border-radius: 10px;
-              display: inline-block;
+          & .rolldetail {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+
+            & .itemdice {
+              align-items: center;
+              border-radius: 0px 10px 10px 0px;
+              margin-right: 10px;
+              display: flex;
+              font-weight: 900;
+              color: #333333;
             }
-
-            & .critical {
-              color: #eeeeee;
-              margin-right: 2px;
-              padding: 5px 10px;
-              background: #147500;
-              border-radius: 10px;
-              display: inline-block;
-            }
-
-            & .fumble {
-              color: #eeeeee;
-              margin-right: 2px;
-              padding: 5px 10px;
-              background: #a80000;
-              border-radius: 10px;
-              display: inline-block;
+        
+            & .dicedetail {
+              text-align: justify;
+              word-break:break-all;
+              margin-top: 5px;
+              flex: 1 1 0;
+    
+              & p {
+                padding: 5px;
+                border-radius: 10px;
+                background: #eeeeee;
+                border: 1px solid #333333;
+    
+                & .normal,
+                & .mod {
+                  color: #eeeeee;
+                  margin-right: 2px;
+                  padding: 0px 5px;
+                  background: #333333;
+                  border-radius: 10px;
+                  display: inline-block;
+                }
+    
+                & .critical {
+                  color: #eeeeee;
+                  margin-right: 2px;
+                  padding: 0px 5px;
+                  background: #147500;
+                  border-radius: 10px;
+                  display: inline-block;
+                }
+    
+                & .fumble {
+                  color: #eeeeee;
+                  margin-right: 2px;
+                  padding: 0px 5px;
+                  background: #a80000;
+                  border-radius: 10px;
+                  display: inline-block;
+                }
+              }
             }
           }
         }
       }
-    }
-
-    & .itemmessage {
-      text-align: justify;
-      margin-top: 10px;
-      color: #333333;
-      border-radius: 10px;
     }
   }
 }
