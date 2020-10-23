@@ -33,12 +33,12 @@ app.on('ready', () => {
   win.loadFile('./index.html');
   // win.loadURL('https://www.naver.com')
   // 파일을 불러와서 화면에 로드한다. 주소도 로드할 수 있다.
+  
+  win.setMenu(null);
 
   if (isDev) {
     win.webContents.openDevTools();
   }
-  
-  win.setMenu(null);
 });
 
 // 자동새로고침 기능을 말하는거 같은데 일단 나는 안된다.

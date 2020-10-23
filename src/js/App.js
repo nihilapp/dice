@@ -1,10 +1,10 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, memo } from 'react';
 import RollDiceForm from './Components/RollDiceForm';
 import RollDecription from './Components/RollDecription';
 
 const suffixs = ['2', '4', '6', '8', '10', '12', '20', '100',];
 
-const App = () => {
+const App = memo(() => {
   const [id, setId] = useState(1);
   let classname;
 
@@ -48,7 +48,7 @@ const App = () => {
     <>
       <div id='topdicebox'>
         {suffixs.map((sfx) => (
-          <button key={`${results.id}-${sfx}`} className='topdices' value={`D${sfx}`} onClick={onClickRollDices}>D{sfx}</button>
+          <button key={`D${sfx}`} className='topdices' value={`D${sfx}`} onClick={onClickRollDices}>D{sfx}</button>
         ))}
       </div>
       <RollDecription />
@@ -70,6 +70,8 @@ const App = () => {
       </div>
     </>
   );
-};
+});
+
+App.displayName = 'App';
 
 export default App;

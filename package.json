@@ -42,7 +42,7 @@
   "scripts": {
     "dev": "webpack --config webpack.common.js",
     "prod": "webpack --config webpack.prod.js",
-    "watch": "webpack --config webpack.common.js --watch",
+    "watch": "webpack --config webpack.common.js",
     "start": "electron .",
     "postinstall": "electron-builder install-app-deps",
     "build:osx": "electron-builder --mac",
@@ -75,7 +75,6 @@
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-react": "^7.21.5",
     "eslint-plugin-react-hooks": "^4.2.0",
-    "react-devtools-electron": "^4.7.0",
     "react-hot-loader": "^4.13.0",
     "sass": "^1.27.0",
     "sass-loader": "^10.0.4",

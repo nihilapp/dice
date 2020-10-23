@@ -2,6 +2,7 @@ const path = require('path');
 
 module.exports = {
   mode: 'development',
+  watch: true,
   // 모드
   entry: './src/js/index.js',
   // 기준이 될 파일

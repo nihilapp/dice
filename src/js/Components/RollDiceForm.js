@@ -1,7 +1,7 @@
-import React, { useState, useRef, useCallback } from 'react';
+import React, { useState, useRef, useCallback, memo } from 'react';
 import { randomString } from './randomString';
 
-const RollDiceForm = ({setResults, id, setId}) => {
+const RollDiceForm = memo(({setResults, id, setId}) => {
   const [value, setValue] = useState('');
 
   const inputRef = useRef(null);
@@ -165,6 +165,8 @@ const RollDiceForm = ({setResults, id, setId}) => {
       <button className='cleardice' onClick={onClickClearDice}>초기화</button>
     </form>
   );
-};
+});
+
+RollDiceForm.displayName = 'RollDiceForm';
 
 export default RollDiceForm;
