@@ -150,6 +150,7 @@ const RollDiceForm = ({setResults, id, setId}) => {
     e.preventDefault();
     setValue('');
     
+    setId(1);
     setResults([{
       id: 0,
       TotalDice: '주사위를 굴리세요',
