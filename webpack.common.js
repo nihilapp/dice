@@ -23,7 +23,8 @@ module.exports = {
                   esmodules: true
                 }
               }],
-              '@babel/preset-react']
+              '@babel/preset-react'],
+            plugins: ['react-hot-loader/babel'],
           }
         }
       },
@@ -45,5 +46,12 @@ module.exports = {
   output: {
     filename: 'app.js',
     path: path.resolve(__dirname, 'build', 'js'),
+  },
+  devServer: {
+    contentBase: path.join(__dirname, '/'),
+    publicPath: "/build/js/",
+    overlay: true,
+    port: 3000,
+    hot: true,
   },
 };

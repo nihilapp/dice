@@ -10,25 +10,25 @@ const RollDiceForm = ({setResults, id, setId}) => {
     setValue(e.target.value);
   };
 
+  let newValue;
+  let dicestring;
+  let dicebox = [];
+  let spanboxArray = [];
+  let spanbox = [];
+  let roll;
+  let classname;
+  let rolldicedetails = [];
+  let rollspan;
+  let rolldetail;
+  let suffix;
+  let modNumber;
+  let dicestringNumber;
+  let dices;
+  let plus;
+  let totalArray = [];
+
   const onSubmitRollDice = useCallback((e) => {
     e.preventDefault();
-
-    let newValue;
-    let dicestring;
-    let dicebox = [];
-    let spanboxArray = [];
-    let spanbox = [];
-    let roll;
-    let classname;
-    let rolldicedetails = [];
-    let rollspan;
-    let rolldetail;
-    let suffix;
-    let modNumber;
-    let dicestringNumber;
-    let dices;
-    let plus;
-    let totalArray = [];
 
     const valueArray = value.split(' ');
     let dicetotal;
@@ -146,10 +146,22 @@ const RollDiceForm = ({setResults, id, setId}) => {
 
   }, [value, id]);
 
+  const onClickClearDice = useCallback((e) => {
+    e.preventDefault();
+    setValue('');
+    
+    setResults([{
+      id: 0,
+      TotalDice: '주사위를 굴리세요',
+      dicedetails: '',
+    }]);
+  }, []);
+
   return (
     <form id='diceform' onSubmit={onSubmitRollDice}>
       <input type='text' placeholder='?d? 혹은 ?D?' value={value} ref={inputRef} onChange={onChangeInputDice} />
       <button type='submit'>굴리기</button>
+      <button className='cleardice' onClick={onClickClearDice}>초기화</button>
     </form>
   );
 };

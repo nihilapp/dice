@@ -21,6 +21,27 @@ $smallest-size: 12pt;
     font-size: $small-size;
   }
   #diceform {
+    width: calc(100% - 20px);
+    display: flex;
+    flex-direction: row;
+
+    & input:nth-child(1) {
+      border-radius: 10px 0px 0px 10px;
+      margin-right: 2px;
+      width: 100%;
+      flex: 3 1 0;
+    }
+  
+    & button:nth-child(2) {
+      margin-right: 2px;
+      flex: 1 1 0;
+    }
+  
+    & button:nth-child(3) {
+      border-radius: 0px 10px 10px 0px;
+      flex: 1 1 0;
+    }
+
     & input {font-size: $big-size;}
     & button {font-size: $big-size;}
   }
@@ -42,7 +63,7 @@ $smallest-size: 12pt;
   }
 }
 
-@media (min-width: 401px) and (max-width: 700px) {
+@media (min-width: 451px) and (max-width: 700px) {
   #topdicebox {
     & .topdices:nth-child(1) {border-radius: 10px 0px 0px 10px;}
     & .topdices:nth-last-child(1) {border-radius: 0px 10px 10px 0px;}
@@ -55,6 +76,27 @@ $smallest-size: 12pt;
     font-size: $smallest-size;
   }
   #diceform {
+    width: calc(100% - 20px);
+    display: flex;
+    flex-direction: row;
+
+    & input:nth-child(1) {
+      border-radius: 10px 0px 0px 10px;
+      margin-right: 2px;
+      width: 100%;
+      flex: 3 1 0;
+    }
+  
+    & button:nth-child(2) {
+      margin-right: 2px;
+      flex: 1 1 0;
+    }
+  
+    & button:nth-child(3) {
+      border-radius: 0px 10px 10px 0px;
+      flex: 1 1 0;
+    }
+
     & input {font-size: $middle-size;}
     & button {font-size: $middle-size;}
   }
@@ -76,7 +118,7 @@ $smallest-size: 12pt;
   }
 }
 
-@media (min-width: 101px) and (max-width: 400px) {
+@media (min-width: 101px) and (max-width: 450px) {
   #topdicebox {
     & .topdices:nth-child(1) {border-radius: 10px 0px 0px 0px;}
     & .topdices:nth-child(4) {border-radius: 0px 10px 0px 0px;}
@@ -88,8 +130,49 @@ $smallest-size: 12pt;
     font-size: $smallest-size;
   }
   #diceform {
-    & input {font-size: $small-size;}
+    width: calc(100% - 20px);
+    overflow: hidden;
+
+    & input:nth-child(1) {
+      border-radius: 10px 10px 0px 0px;
+      margin: 0px 0px 2px 0px;
+      font-size: $small-size;
+      display: block;
+      width: calc(100% - 12px);
+    }
+  
+    & button:nth-child(2) {
+      margin-right: 2px;
+      border-radius: 0px 0px 0px 10px;
+      float: left;
+      box-sizing: border-box;
+      width: calc(50% - 1px);
+    }
+  
+    & button:nth-child(3) {
+      border-radius: 0px 0px 10px 0px;
+      float: left;
+      box-sizing: border-box;
+      width: calc(50% - 1px);
+    }
+
     & button {font-size: $small-size;}
+  }
+  #diceresultlist {
+    & .diceresultitem {
+      & .itemcontent {
+        & .contenttitle {
+          & .itemnumber {font-size: $msmall-size;}
+          & .totaldice {font-size: $msmall-size;}
+        }
+        & .itemdice {font-size: $small-size;}
+        & .itemdetail {
+          & .dicedetails {
+            & .dicedetail {font-size: $smallest-size;}
+          }
+        }
+      }
+    }
   }
 }
 
@@ -145,18 +228,10 @@ $smallest-size: 12pt;
 #diceform {
   margin-bottom: 20px;
   padding: 10px;
-  width: calc(100% - 20px);
-
-  & input:nth-child(1) {
-    border-radius: 10px 10px 0px 0px;
-  }
 
   & input {
     text-align: center;
-    padding: 10px 5px;
-    display: block;
-    width: calc(100% - 12px);
-    margin-bottom: 5px;
+    padding: 0px 5px;
     border: 1px solid #333333;
 
     & ::placeholder {
@@ -165,12 +240,10 @@ $smallest-size: 12pt;
   }
 
   & button {
-    padding: 5px;
+    padding: 0px 5px;
     background: #333333;
     color: #eeeeee;
     border: 1px solid #333333;
-    width: 100%;
-    border-radius: 0px 0px 10px 10px;
 
     &:hover {
       color: #333333;
