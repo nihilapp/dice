@@ -2,16 +2,16 @@ import React, { useState, useRef, useCallback, memo } from 'react';
 import { randomString } from './randomString';
 
 const RollDiceForm = memo(({setResults, id, setId}) => {
-  const [value, setValue] = useState('');
+  const [values, setValues] = useState('');
 
   const inputRef = useRef(null);
 
   const onChangeInputDice = (e) => {
-    setValue(e.target.value);
+    setValues(e.target.value);
   };
 
   let newValue;
-  let dicestring;
+  let Dstr;
   let dicebox = [];
   let spanboxArray = [];
   let spanbox = [];
@@ -22,7 +22,7 @@ const RollDiceForm = memo(({setResults, id, setId}) => {
   let rolldetail;
   let suffix;
   let modNumber;
-  let dicestringNumber;
+  let Dnum;
   let dices;
   let plus;
   let totalArray = [];
@@ -30,17 +30,18 @@ const RollDiceForm = memo(({setResults, id, setId}) => {
   const onSubmitRollDice = useCallback((e) => {
     e.preventDefault();
 
-    const valueArray = value.split(' ');
+    const select = document.getElementById('rollType');
+    const value = values.split(' ');
     let dicetotal;
     
-    for (let x = 0; x <= valueArray.length - 1; x++) {
-      if (valueArray[x].includes('d') || valueArray[x].includes('D')) {
-        if (valueArray[x].includes('d')) {
-          newValue = valueArray[x].replace('d', 'D');
-          dicestring = 'D';
-        } else if (valueArray[x].includes('D')) {
-          newValue = valueArray[x];
-          dicestring = 'D';
+    for (let x = 0; x <= value.length - 1; x++) {
+      if (value[x].includes('d') || value[x].includes('D')) {
+        if (value[x].includes('d')) {
+          newValue = value[x].replace('d', 'D');
+          Dstr = 'D';
+        } else if (value[x].includes('D')) {
+          newValue = value[x];
+          Dstr = 'D';
         }
       } else {
         setId(id + 1);
@@ -52,25 +53,31 @@ const RollDiceForm = memo(({setResults, id, setId}) => {
         return;
       }
 
-      dicestringNumber = newValue.indexOf(dicestring);
-      dices = Number(newValue.slice(0, dicestringNumber));
+      Dnum = newValue.indexOf(Dstr);
+      dices = Number(newValue.slice(0, Dnum));
       plus = newValue.indexOf('+');
 
       
       if (plus == -1) {
-        suffix = Number(newValue.slice(dicestringNumber + 1, newValue.length));
+        suffix = Number(newValue.slice(Dnum + 1, newValue.length));
         modNumber = 0;
       } else {
-        suffix = Number(newValue.slice(dicestringNumber + 1, plus));
+        suffix = Number(newValue.slice(Dnum + 1, plus));
         modNumber = Number(newValue.slice(plus + 1, newValue.length));
       }
 
       if (dices == 0) {
         dices = 1;
       }
-  
+
       for (let i = 0; i < dices; i++) {
-        roll = Math.ceil(Math.random() * suffix);
+        if (select.value == 'maximum') {
+          roll = suffix;
+        } else if (select.value == 'minimum') {
+          roll = 1;
+        } else if (select.value == 'normal') {
+          roll = Math.ceil(Math.random() * suffix);
+        }
         
         if (roll == suffix) {
           classname = 'critical';
@@ -88,13 +95,13 @@ const RollDiceForm = memo(({setResults, id, setId}) => {
       spanboxArray.push(spanbox);
 
       if (dices == 1) {
-        newValue = newValue.slice(dicestringNumber, newValue.length);
+        newValue = newValue.slice(Dnum, newValue.length);
       }
 
       if (modNumber == 0) {
         rolldetail = (
           <div className='rolldetail' key={`${id}-${randomString()}-${newValue}`}>
-            <div className='itemdice'><p>{newValue} ▶</p></div>
+            <div className='itemdice'><p>{newValue} <i className="fas fa-arrow-circle-right"></i></p></div>
             <div key={`${id}-${randomString()}-${dices}${suffix}${modNumber}`} className='dicedetail'>
               <p>
                 {spanboxArray[x]}
@@ -105,7 +112,7 @@ const RollDiceForm = memo(({setResults, id, setId}) => {
       } else {
         rolldetail = (
             <div className='rolldetail' key={`${id}-${randomString()}-${newValue}`}>
-              <div className='itemdice'><p>{newValue} ▶</p></div>
+              <div className='itemdice'><p>{newValue} <i className="fas fa-arrow-circle-right"></i></p></div>
               <div key={`${id}-${randomString()}-${dices}${suffix}${modNumber}`} className='dicedetail'>
                 <p>
                   {spanboxArray[x]}
@@ -144,11 +151,11 @@ const RollDiceForm = memo(({setResults, id, setId}) => {
         }]);
       }
 
-  }, [value, id]);
+  }, [values, id]);
 
   const onClickClearDice = useCallback((e) => {
     e.preventDefault();
-    setValue('');
+    setValues('');
     
     setId(1);
     setResults([{
@@ -160,7 +167,12 @@ const RollDiceForm = memo(({setResults, id, setId}) => {
 
   return (
     <form id='diceform' onSubmit={onSubmitRollDice}>
-      <input type='text' placeholder='?d? 혹은 ?D?' value={value} ref={inputRef} onChange={onChangeInputDice} />
+      <input type='text' placeholder='?d? 혹은 ?D?' value={values} ref={inputRef} onChange={onChangeInputDice} />
+      <select name='rollType' id='rollType' defaultValue='normal'>
+        <option value='normal'>랜덤</option>
+        <option value='maximum'>최대값</option>
+        <option value='minimum'>최소값</option>
+      </select>
       <button type='submit'>굴리기</button>
       <button className='cleardice' onClick={onClickClearDice}>초기화</button>
     </form>

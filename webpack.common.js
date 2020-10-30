@@ -5,7 +5,7 @@ module.exports = {
   watch: true,
   entry: './src/js/index.js',
   devtool: 'inline-source-map',
-  target: 'electron-renderer',
+  // target: 'electron-renderer',
   module: {
     rules: [
       { // 바벨 로더
@@ -49,5 +49,6 @@ module.exports = {
     overlay: true,
     port: 3000,
     hot: true,
+    open: true,
   },
 };

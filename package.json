@@ -1,57 +1,13 @@
 {
   "name": "dice-roll",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "roll dice app",
   "main": "main.js",
   "repository": "git@github.com:NIHILncunia/DiceRoll.git",
-  "build": {
-    "productName": "DiceRoll",
-    "appId": "com.nihil.DiceRoll",
-    "asar": true,
-    "protocols": {
-      "name": "DiceRoll",
-      "schemes": [
-        "DiceRoll"
-      ]
-    },
-    "win": {
-      "target": [
-        "zip",
-        "nsis"
-      ],
-      "icon": "./assets/icons/icon.ico"
-    },
-    "nsis": {
-      "oneClick": false,
-      "allowToChangeInstallationDirectory": true,
-      "installerIcon": "./assets/icons/icon.ico",
-      "installerHeaderIcon": "./assets/icons/icon.ico",
-      "deleteAppDataOnUninstall": true,
-      "installerLanguages": [
-        "en_US",
-        "ko_KR"
-      ],
-      "language": "1042"
-    },
-    "directories": {
-      "buildResources": "./assets",
-      "output": "./dist/",
-      "app": "."
-    }
-  },
   "scripts": {
     "dev": "webpack --config webpack.common.js",
     "prod": "webpack --config webpack.prod.js",
-    "watch": "webpack --config webpack.common.js",
-    "start": "electron .",
-    "postinstall": "electron-builder install-app-deps",
-    "build:osx": "electron-builder --mac",
-    "build:linux": "npm run build:linux32 && npm run build:linux64",
-    "build:linux32": "electron-builder --linux --ia32",
-    "build:linux64": "electron-builder --linux --x64",
-    "build:win": "npm run build:win32 && npm run build:win64",
-    "build:win32": "electron-builder --win --ia32",
-    "build:win64": "electron-builder --win --x64"
+    "serve": "webpack serve --config webpack.common.js"
   },
   "keywords": [],
   "author": "NIHILncunia",
@@ -60,7 +16,7 @@
     "os-utils": "0.0.14",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "styled-components": "^5.2.0"
+    "styled-components": "^5.2.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.3",
@@ -68,18 +24,15 @@
     "@babel/preset-react": "^7.12.1",
     "babel-loader": "^8.1.0",
     "css-loader": "^5.0.0",
-    "electron": "^10.1.5",
-    "electron-builder": "^22.9.1",
-    "electron-reload": "^1.5.0",
-    "eslint": "^7.12.0",
+    "eslint": "^7.12.1",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-react": "^7.21.5",
     "eslint-plugin-react-hooks": "^4.2.0",
     "react-hot-loader": "^4.13.0",
-    "sass": "^1.27.0",
+    "sass": "^1.28.0",
     "sass-loader": "^10.0.4",
     "style-loader": "^2.0.0",
-    "webpack": "^5.2.0",
+    "webpack": "^5.3.2",
     "webpack-cli": "^4.1.0",
     "webpack-dev-server": "^3.11.0"
   }

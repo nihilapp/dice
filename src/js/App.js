@@ -1,6 +1,7 @@
 import React, { useState, useCallback, memo } from 'react';
 import RollDiceForm from './Components/RollDiceForm';
 import RollDecription from './Components/RollDecription';
+import { hot } from 'react-hot-loader';
 
 const suffixs = ['2', '4', '6', '8', '10', '12', '20', '100',];
 
@@ -19,27 +20,27 @@ const App = memo(() => {
     const diceNumber = Number(dice.replace('D', ''));
 
     setId(id + 1);
-    const rolltotaldice = Math.ceil(Math.random() * diceNumber);
+    const totaldice = Math.ceil(Math.random() * diceNumber);
 
-    if (rolltotaldice == 1) {
+    if (totaldice == 1) {
       classname = 'fumble';
-    } else if (rolltotaldice  == diceNumber) {
+    } else if (totaldice  == diceNumber) {
       classname  = 'critical';
     } else {
       classname  = 'normal';
     }
 
-    const rolltotalspan = <span key={`${id}-${rolltotaldice}`} className={classname}>{rolltotaldice}</span>;
+    const totalspan = <span key={`${id}-${totaldice}`} className={classname}>{totaldice}</span>;
     const rolldicedetail = (
       <div key={`${id}`} className='rolldetail'>
-        <div className='itemdice'><p>{dice} ▶</p></div>
-        <div key={`${id}-${dice}-${rolltotaldice}`} className='dicedetail'><p>{rolltotalspan}</p></div>
+        <div className='itemdice'><p>{dice} <i className="fas fa-arrow-circle-right"></i></p></div>
+        <div key={`${id}-${dice}-${totaldice}`} className='dicedetail'><p>{totalspan}</p></div>
       </div>
     );
 
     setResults((prevState) => [...prevState, {
       id: id,
-      TotalDice: rolltotaldice,
+      TotalDice: totaldice,
       dicedetails: [rolldicedetail],
     }]);
   }, [id]);
@@ -74,4 +75,4 @@ const App = memo(() => {
 
 App.displayName = 'App';
 
-export default App;
+export default hot(module)(App);

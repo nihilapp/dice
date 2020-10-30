@@ -4,7 +4,6 @@ module.exports = {
   mode: 'production',
   entry: './src/js/index.js',
   devtool: 'source-map',
-  target: 'electron-renderer',
   module: {
     rules: [
       { // 바벨 로더

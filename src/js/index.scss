@@ -25,23 +25,26 @@ $smallest-size: 12pt;
     display: flex;
     flex-direction: row;
 
-    & input:nth-child(1) {
+    & :nth-child(1) {
       border-radius: 10px 0px 0px 10px;
       margin-right: 2px;
       width: 100%;
       flex: 3 1 0;
     }
-  
-    & button:nth-child(2) {
-      margin-right: 2px;
-      flex: 1 1 0;
-    }
-  
-    & button:nth-child(3) {
-      border-radius: 0px 10px 10px 0px;
-      flex: 1 1 0;
-    }
 
+    & :nth-child(2) {
+      margin-right: 2px;
+    }
+  
+    & :nth-child(3) {
+      margin-right: 2px;
+    }
+  
+    & :nth-child(4) {
+      border-radius: 0px 10px 10px 0px;
+    }
+    
+    & select {font-size: $big-size;}
     & input {font-size: $big-size;}
     & button {font-size: $big-size;}
   }
@@ -86,17 +89,20 @@ $smallest-size: 12pt;
       width: 100%;
       flex: 3 1 0;
     }
-  
-    & button:nth-child(2) {
+
+    & :nth-child(2) {
       margin-right: 2px;
-      flex: 1 1 0;
     }
   
     & button:nth-child(3) {
+      margin-right: 2px;
+    }
+  
+    & button:nth-child(4) {
       border-radius: 0px 10px 10px 0px;
-      flex: 1 1 0;
     }
 
+    & select {font-size: $middle-size;}
     & input {font-size: $middle-size;}
     & button {font-size: $middle-size;}
   }
@@ -133,29 +139,37 @@ $smallest-size: 12pt;
     width: calc(100% - 20px);
     overflow: hidden;
 
-    & input:nth-child(1) {
+    & :nth-child(1) {
       border-radius: 10px 10px 0px 0px;
       margin: 0px 0px 2px 0px;
       font-size: $small-size;
       display: block;
       width: calc(100% - 12px);
     }
-  
-    & button:nth-child(2) {
-      margin-right: 2px;
+
+    & :nth-child(2) {
       border-radius: 0px 0px 0px 10px;
+      margin-right: 2px;
       float: left;
       box-sizing: border-box;
-      width: calc(50% - 1px);
+      width: calc(33.33% - 1px);
     }
   
-    & button:nth-child(3) {
+    & :nth-child(3) {
+      margin-right: 2px;
+      float: left;
+      box-sizing: border-box;
+      width: calc(33.33% - 2px);
+    }
+  
+    & :nth-child(4) {
       border-radius: 0px 0px 10px 0px;
       float: left;
       box-sizing: border-box;
-      width: calc(50% - 1px);
+      width: calc(33.33% - 1px);
     }
 
+    & select {font-size: $small-size;}
     & button {font-size: $small-size;}
   }
   #diceresultlist {
@@ -229,9 +243,17 @@ $smallest-size: 12pt;
   margin-bottom: 20px;
   padding: 10px;
 
+  & select {
+    padding: 0px 5px;
+    border: 1px solid #333333;
+    color: #eeeeee;
+    background: #333333;
+    text-align-last: center;
+  }
+
   & input {
     text-align: center;
-    padding: 0px 5px;
+    padding: 1px 5px;
     border: 1px solid #333333;
 
     & ::placeholder {
@@ -240,7 +262,7 @@ $smallest-size: 12pt;
   }
 
   & button {
-    padding: 0px 5px;
+    padding: 1px 5px;
     background: #333333;
     color: #eeeeee;
     border: 1px solid #333333;
