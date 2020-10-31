@@ -16,7 +16,8 @@
     "os-utils": "0.0.14",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "styled-components": "^5.2.1"
+    "styled-components": "^5.2.1",
+    "uuid4": "^2.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.12.3",

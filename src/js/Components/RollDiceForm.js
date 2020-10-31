@@ -1,7 +1,7 @@
-import React, { useState, useRef, useCallback, memo } from 'react';
-import { randomString } from './randomString';
+import React, { useState, useRef, useCallback } from 'react';
+import uuid from 'uuid/v4';
 
-const RollDiceForm = memo(({setResults, id, setId}) => {
+const RollDiceForm = ({setResults, id, setId}) => {
   const [values, setValues] = useState('');
 
   const inputRef = useRef(null);
@@ -87,7 +87,7 @@ const RollDiceForm = memo(({setResults, id, setId}) => {
           classname = 'normal';
         }
         
-        rollspan = <span key={`${id}-${i}-${classname}-${roll}`} className={classname}>{roll}</span>;
+        rollspan = <span key={uuid()} className={classname}>{roll}</span>;
         
         spanbox.push(rollspan);
         dicebox.push(roll);
@@ -98,31 +98,22 @@ const RollDiceForm = memo(({setResults, id, setId}) => {
         newValue = newValue.slice(Dnum, newValue.length);
       }
 
-      if (modNumber == 0) {
-        rolldetail = (
-          <div className='rolldetail' key={`${id}-${randomString()}-${newValue}`}>
-            <div className='itemdice'><p>{newValue} <i className="fas fa-arrow-circle-right"></i></p></div>
-            <div key={`${id}-${randomString()}-${dices}${suffix}${modNumber}`} className='dicedetail'>
-              <p>
-                {spanboxArray[x]}
-              </p>
-            </div>
+      rolldetail = (
+        <div className='rolldetail' key={uuid()}>
+          <div className='itemdice'><p>{newValue} <i className="fas fa-arrow-circle-right"></i></p></div>
+          <div key={uuid()} className='dicedetail'>
+            {
+              modNumber == 0
+              ? (
+                <p>{spanboxArray[x]}</p>
+              )
+              : (
+                <p>{spanboxArray[x]}{' + '}{<span className='mod'>{modNumber}</span>}</p>
+              )
+            }
           </div>
-        );
-      } else {
-        rolldetail = (
-            <div className='rolldetail' key={`${id}-${randomString()}-${newValue}`}>
-              <div className='itemdice'><p>{newValue} <i className="fas fa-arrow-circle-right"></i></p></div>
-              <div key={`${id}-${randomString()}-${dices}${suffix}${modNumber}`} className='dicedetail'>
-                <p>
-                  {spanboxArray[x]}
-                  {' + '}
-                  {<span className='mod'>{modNumber}</span>}
-                </p>
-              </div>
-            </div>
-        );
-      }
+        </div>
+      );
       
       rolldicedetails.push(rolldetail);
 
@@ -137,19 +128,11 @@ const RollDiceForm = memo(({setResults, id, setId}) => {
     totalArray = totalArray.reduce((pre, crr, index, arr) => { return pre + crr; }, 0);
 
     setId(id + 1);
-      if (modNumber == 0) {
-        setResults((prevState) => [...prevState, {
-          id: id,
-          TotalDice: totalArray,
-          dicedetails: rolldicedetails,
-        }]);
-      } else {
-        setResults((prevState) => [...prevState, {
-          id: id,
-          TotalDice: totalArray,
-          dicedetails: rolldicedetails,
-        }]);
-      }
+    setResults((prevState) => [...prevState, {
+      id: id,
+      TotalDice: totalArray,
+      dicedetails: rolldicedetails,
+    }]);
 
   }, [values, id]);
 
@@ -177,7 +160,7 @@ const RollDiceForm = memo(({setResults, id, setId}) => {
       <button className='cleardice' onClick={onClickClearDice}>초기화</button>
     </form>
   );
-});
+};
 
 RollDiceForm.displayName = 'RollDiceForm';
 
