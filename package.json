@@ -1,6 +1,6 @@
 {
   "name": "dice-roll",
-  "version": "2.2.0",
+  "version": "3.0.0",
   "description": "roll dice app",
   "main": "main.js",
   "repository": "git@github.com:NIHILncunia/DiceRoll.git",

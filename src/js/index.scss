@@ -1,14 +1,14 @@
 // 초기화
 @import url(https://fonts.googleapis.com/earlyaccess/notosanskr.css);
 
-$biggest-size: 24pt;
+$biggest-size: 32pt;
 $big-size: 20pt;
 $middle-size: 18pt;
 $msmall-size: 16pt;
 $small-size: 14pt;
 $smallest-size: 12pt;
 
-@media (min-width: 701px) {
+@media (min-width: 801px) {
   #topdicebox {
     & .topdices:nth-child(1) {border-radius: 10px 0px 0px 10px;}
     & .topdices:nth-last-child(1) {border-radius: 0px 10px 10px 0px;}
@@ -16,9 +16,6 @@ $smallest-size: 12pt;
       font-size: $small-size;
       width: calc(12.5% - 2px);
     }
-  }
-  #decription {
-    font-size: $small-size;
   }
   #diceform {
     width: calc(100% - 20px);
@@ -48,11 +45,16 @@ $smallest-size: 12pt;
     & input {font-size: $big-size;}
     & button {font-size: $big-size;}
   }
+  #resultListBox {
+    height: calc(100vh - 126px - 20px - 74px);
+    overflow: auto;
+  }
   #diceresultlist {
+    & .diceresultitem:nth-child(1):before,
+    & .diceresultitem:before {font-size: $biggest-size;}
     & .diceresultitem {
       & .itemcontent {
         & .contenttitle {
-          & .itemnumber {font-size: $biggest-size;}
           & .totaldice {font-size: $biggest-size;}
         }
         & .itemdice {font-size: $middle-size;}
@@ -66,7 +68,7 @@ $smallest-size: 12pt;
   }
 }
 
-@media (min-width: 451px) and (max-width: 700px) {
+@media (min-width: 451px) and (max-width: 800px) {
   #topdicebox {
     & .topdices:nth-child(1) {border-radius: 10px 0px 0px 10px;}
     & .topdices:nth-last-child(1) {border-radius: 0px 10px 10px 0px;}
@@ -75,42 +77,53 @@ $smallest-size: 12pt;
       width: calc(12.5% - 2px);
     }
   }
-  #decription {
-    font-size: $smallest-size;
-  }
   #diceform {
     width: calc(100% - 20px);
-    display: flex;
-    flex-direction: row;
+    overflow: hidden;
 
-    & input:nth-child(1) {
-      border-radius: 10px 0px 0px 10px;
-      margin-right: 2px;
-      width: 100%;
-      flex: 3 1 0;
+    & :nth-child(1) {
+      border-radius: 10px 10px 0px 0px;
+      margin: 0px 0px 2px 0px;
+      font-size: $middle-size;
+      display: block;
+      width: calc(100% - 12px);
     }
 
     & :nth-child(2) {
+      border-radius: 0px 0px 0px 10px;
       margin-right: 2px;
+      float: left;
+      box-sizing: border-box;
+      width: calc(33.33% - 1px);
     }
   
-    & button:nth-child(3) {
+    & :nth-child(3) {
       margin-right: 2px;
+      float: left;
+      box-sizing: border-box;
+      width: calc(33.33% - 2px);
     }
   
-    & button:nth-child(4) {
-      border-radius: 0px 10px 10px 0px;
+    & :nth-child(4) {
+      border-radius: 0px 0px 10px 0px;
+      float: left;
+      box-sizing: border-box;
+      width: calc(33.33% - 1px);
     }
 
     & select {font-size: $middle-size;}
-    & input {font-size: $middle-size;}
     & button {font-size: $middle-size;}
   }
+  #resultListBox {
+    height: calc(100vh - 160px - 20px - 74px);
+    overflow: auto;
+  }
   #diceresultlist {
+    & .diceresultitem:nth-child(1):before,
+    & .diceresultitem:before {font-size: $biggest-size;}
     & .diceresultitem {
       & .itemcontent {
         & .contenttitle {
-          & .itemnumber {font-size: $biggest-size;}
           & .totaldice {font-size: $biggest-size;}
         }
         & .itemdice {font-size: $msmall-size;}
@@ -131,9 +144,6 @@ $smallest-size: 12pt;
     & .topdices:nth-child(5) {border-radius: 0px 0px 0px 10px;}
     & .topdices:nth-child(8) {border-radius: 0px 0px 10px 0px;}
     & .topdices {width: calc(25% - 2px);}
-  }
-  #decription {
-    font-size: $smallest-size;
   }
   #diceform {
     width: calc(100% - 20px);
@@ -172,12 +182,17 @@ $smallest-size: 12pt;
     & select {font-size: $small-size;}
     & button {font-size: $small-size;}
   }
+  #resultListBox {
+    height: calc(100vh - 172px - 20px - 74px);
+    overflow: auto;
+  }
   #diceresultlist {
+    & .diceresultitem:nth-child(1):before,
+    & .diceresultitem:before {font-size: $big-size;}
     & .diceresultitem {
       & .itemcontent {
         & .contenttitle {
-          & .itemnumber {font-size: $msmall-size;}
-          & .totaldice {font-size: $msmall-size;}
+          & .totaldice {font-size: $big-size;}
         }
         & .itemdice {font-size: $small-size;}
         & .itemdetail {
@@ -194,6 +209,10 @@ $smallest-size: 12pt;
   padding: 0px;
   margin: 0px auto;
   font-family: 'Noto Sans KR', sans-serif;
+}
+
+#diceControl {
+  margin-bottom: 20px;
 }
 
 // 상단 주사위
@@ -216,6 +235,7 @@ $smallest-size: 12pt;
     &:hover {
       color: #333333;
       background: #eeeeee;
+      cursor: pointer;
     }
 
     &:active {
@@ -240,7 +260,6 @@ $smallest-size: 12pt;
 
 // 중앙 주사위 입력
 #diceform {
-  margin-bottom: 20px;
   padding: 10px;
 
   & select {
@@ -270,6 +289,7 @@ $smallest-size: 12pt;
     &:hover {
       color: #333333;
       background: #eeeeee;
+      cursor: pointer;
     }
 
     &:active {
@@ -279,22 +299,79 @@ $smallest-size: 12pt;
   }
 }
 
+#help {
+  padding: 0px 10px 10px 10px;
+  text-align: right;
+
+  & .modalbutton {
+    background: #333333;
+    color: #eeeeee;
+    padding: 10px;
+    font-size: $biggest-size;
+    border-radius: 50px;
+    box-sizing: border-box;
+    border: 1px solid #333333;
+
+    &:hover {
+      color: #eeeeee;
+      background: #aaaaaa;
+      cursor: pointer;
+    }
+
+    &:active {
+      color: #eeeeee;
+      background: #666666;
+    }
+  }
+}
 
 // 하단 주사위 결과 리스트
 #diceresultlist {
   padding: 10px;
 
+  & .diceresultitem:nth-child(1):before {
+    content: '\f061';
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    margin-right: 10px;
+    background: #333333;
+    color: #ffffff;
+    padding: 8px 10px;
+    border-radius: 30px;
+    justify-content: center;
+    display: flex;
+  }
+
   & .diceresultitem:nth-child(1) {
     border-top: none;
+    padding-top: 0px;
     margin-top: 0px;
   }
 
+  & .diceresultitem:before {
+    content: '\f061';
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    margin-right: 10px;
+    background: #888888;
+    color: #ffffff;
+    padding: 8px 10px;
+    border-radius: 30px;
+    justify-content: center;
+    display: flex;
+  }
+
   & .diceresultitem {
-    margin-top: 20px;
+    margin-top: 10px;
     border-top: 2px dotted #888888;
     padding-top: 10px;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    box-sizing: border-box;
 
     & .itemcontent {
+      width: 100%;
       display: flex;
       flex-direction: column;
 
@@ -302,20 +379,6 @@ $smallest-size: 12pt;
         display: flex;
         flex-direction: row;
         width: 100%;
-
-        & .itemnumber {
-          border-radius: 10px 0px 0px 10px;
-          padding-right: 5px;
-          font-weight: 900;
-  
-          & p {
-            color: #eeeeee;
-            background: #333333;
-            padding: 0px 5px;
-            border-radius: 10px;
-            margin-right: 5px;
-          }
-        }
 
         & .totaldice {
           text-align: justify;
@@ -334,27 +397,25 @@ $smallest-size: 12pt;
           width: 100%;
 
           & .rolldetail {
-            display: flex;
-            flex-direction: row;
             width: 100%;
+            margin-top: 10px;
 
             & .itemdice {
               align-items: center;
               border-radius: 0px 10px 10px 0px;
               margin-right: 10px;
-              display: flex;
               font-weight: 900;
               color: #333333;
             }
         
             & .dicedetail {
+              margin-left: 30px;
               text-align: justify;
               word-break:break-all;
-              margin-top: 5px;
               flex: 1 1 0;
     
               & p {
-                padding: 5px;
+                padding: 3px 5px 5px 5px;
                 border-radius: 10px;
                 background: #eeeeee;
                 border: 1px solid #333333;
@@ -362,29 +423,32 @@ $smallest-size: 12pt;
                 & .normal,
                 & .mod {
                   color: #eeeeee;
-                  margin-right: 2px;
-                  padding: 0px 5px;
+                  margin-right: 5px;
+                  padding: 0px 10px;
                   background: #333333;
-                  border-radius: 10px;
+                  border-radius: 20px;
                   display: inline-block;
+                  margin-top: 2px;
                 }
     
                 & .critical {
                   color: #eeeeee;
-                  margin-right: 2px;
-                  padding: 0px 5px;
+                  margin-right: 5px;
+                  padding: 0px 10px;
                   background: #147500;
-                  border-radius: 10px;
+                  border-radius: 20px;
                   display: inline-block;
+                  margin-top: 2px;
                 }
     
                 & .fumble {
                   color: #eeeeee;
-                  margin-right: 2px;
-                  padding: 0px 5px;
+                  margin-right: 5px;
+                  padding: 0px 10px;
                   background: #a80000;
-                  border-radius: 10px;
+                  border-radius: 40px;
                   display: inline-block;
+                  margin-top: 2px;
                 }
               }
             }
