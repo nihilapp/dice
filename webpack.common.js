@@ -1,11 +1,15 @@
 const path = require('path');
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 
 module.exports = {
   mode: 'development',
-  watch: true,
-  entry: './src/js/index.js',
   devtool: 'inline-source-map',
-  // target: 'electron-renderer',
+  entry: {
+    app: './src/js/index.js',
+  },
+  resolve: {
+    extensions: ['.js', '.jsx'],
+  },
   module: {
     rules: [
       { // 바벨 로더
@@ -20,8 +24,9 @@ module.exports = {
                   esmodules: true
                 }
               }],
-              '@babel/preset-react'],
-            plugins: ['react-hot-loader/babel'],
+              '@babel/preset-react'
+            ],
+            plugins: ['react-refresh/babel'],
           }
         }
       },
@@ -35,11 +40,11 @@ module.exports = {
       }
     ]
   },
-  resolve: {
-    extensions: ['.js', '.jsx'],
-  },
+  plugins: [
+    new ReactRefreshWebpackPlugin(),
+  ],
   output: {
-    filename: 'app.js',
+    filename: '[name].js',
     path: path.resolve(__dirname, 'build', 'js'),
   },
   // 데브서버 관련 설정

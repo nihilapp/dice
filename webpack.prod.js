@@ -2,8 +2,13 @@ const path = require('path');
 
 module.exports = {
   mode: 'production',
-  entry: './src/js/index.js',
   devtool: 'source-map',
+  entry: {
+    app: './src/js/index.js',
+  },
+  resolve: {
+    extensions: ['.js', '.jsx'],
+  },
   module: {
     rules: [
       { // 바벨 로더
@@ -18,7 +23,9 @@ module.exports = {
                   esmodules: true
                 }
               }],
-              '@babel/preset-react']
+              '@babel/preset-react'
+            ],
+            plugins: [],
           }
         }
       },
@@ -32,9 +39,7 @@ module.exports = {
       }
     ]
   },
-  resolve: {
-    extensions: ['.js', '.jsx'],
-  },
+  plugins: [],
   output: {
     filename: 'app.js',
     path: path.resolve(__dirname, 'build', 'js'),

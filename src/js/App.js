@@ -1,5 +1,4 @@
 import React from 'react';
-import { hot } from 'react-hot-loader';
 import DiceResults from './Components/DiceResults';
 import RollDiceForm from './Components/RollDiceForm';
 import TopDiceBox from './Components/TopDiceBox';
@@ -21,4 +20,4 @@ const App = () => {
 
 App.displayName = 'App';
 
-export default hot(module)(App);
+export default App;
