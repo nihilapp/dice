@@ -46,7 +46,7 @@ $smallest-size: 12pt;
     & button {font-size: $big-size;}
   }
   #resultListBox {
-    height: calc(100vh - 126px - 20px - 74px);
+    height: calc(100vh - 194px - 20px);
     overflow: auto;
   }
   #diceresultlist {
@@ -60,6 +60,9 @@ $smallest-size: 12pt;
         & .itemdice {font-size: $middle-size;}
         & .itemdetail {
           & .dicedetails {
+            & .error {
+              & .message {font-size: $small-size;}
+            }
             & .dicedetail {font-size: $small-size;}
           }
         }
@@ -115,7 +118,7 @@ $smallest-size: 12pt;
     & button {font-size: $middle-size;}
   }
   #resultListBox {
-    height: calc(100vh - 160px - 20px - 74px);
+    height: calc(100vh - 228px - 20px);
     overflow: auto;
   }
   #diceresultlist {
@@ -129,6 +132,9 @@ $smallest-size: 12pt;
         & .itemdice {font-size: $msmall-size;}
         & .itemdetail {
           & .dicedetails {
+            & .error {
+              & .message {font-size: $smallest-size;}
+            }
             & .dicedetail {font-size: $smallest-size;}
           }
         }
@@ -183,7 +189,7 @@ $smallest-size: 12pt;
     & button {font-size: $small-size;}
   }
   #resultListBox {
-    height: calc(100vh - 172px - 20px - 74px);
+    height: calc(100vh - 240px - 20px);
     overflow: auto;
   }
   #diceresultlist {
@@ -197,6 +203,9 @@ $smallest-size: 12pt;
         & .itemdice {font-size: $small-size;}
         & .itemdetail {
           & .dicedetails {
+            & .error {
+              & .message {font-size: $smallest-size;}
+            }
             & .dicedetail {font-size: $smallest-size;}
           }
         }
@@ -245,19 +254,6 @@ $smallest-size: 12pt;
   }
 }
 
-// 설명칸
-#decription {
-  padding: 10px;
-  margin-left: 10px;
-  margin-right: 10px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  background: #333333;
-  color: #eeeeee;
-  text-align: justify;
-  border-radius: 10px;
-}
-
 // 중앙 주사위 입력
 #diceform {
   padding: 10px;
@@ -300,27 +296,36 @@ $smallest-size: 12pt;
 }
 
 #help {
-  padding: 0px 10px 10px 10px;
+  padding: 10px 10px 10px 10px;
   text-align: right;
 
   & .modalbutton {
     background: #333333;
     color: #eeeeee;
     padding: 10px;
-    font-size: $biggest-size;
+    font-size: $big-size;
     border-radius: 50px;
     box-sizing: border-box;
     border: 1px solid #333333;
 
+    &:before {
+      content: '도움말';
+    }
+
+    &:after {
+      content: '\f059';
+      margin-left: 5px;
+    }
+
     &:hover {
       color: #eeeeee;
-      background: #aaaaaa;
+      background: #888888;
       cursor: pointer;
     }
 
     &:active {
       color: #eeeeee;
-      background: #666666;
+      background: #555555;
     }
   }
 }
@@ -396,14 +401,28 @@ $smallest-size: 12pt;
           flex-direction: column;
           width: 100%;
 
+          & .error {
+            text-align: justify;
+            word-break:break-all;
+            width: 100%;
+
+            & .message {
+              padding: 5px;
+              border-radius: 10px;
+              background: #eeeeee;
+              border: 1px solid #33333380;
+              margin-bottom: 5px;
+              margin-left: 30px;
+            }
+          }
+
           & .rolldetail {
             width: 100%;
             margin-top: 10px;
 
             & .itemdice {
               align-items: center;
-              border-radius: 0px 10px 10px 0px;
-              margin-right: 10px;
+              margin-bottom: 5px;
               font-weight: 900;
               color: #333333;
             }
@@ -413,42 +432,84 @@ $smallest-size: 12pt;
               text-align: justify;
               word-break:break-all;
               flex: 1 1 0;
+
+              & .detailTop {
+                padding: 0px 5px;
+                border-radius: 10px;
+                background: #eeeeee;
+                border: 1px solid #33333380;
+                margin-bottom: 5px;
+
+                & .topItme {
+                  padding: 3px 5px 4px 5px;
+                  background: #dddddd;
+                  border-radius: 10px;
+                  border: 1px solid #33333350;
+                  margin-top: 5px;
+                  margin-bottom: 5px;
+
+                  & .diceName {
+                    background: #eeeeee;
+                    padding: 0px 5px;
+                    border: 1px solid #33333350;
+                    color: #333333;
+                    border-radius: 10px;
+                    margin-right: 5px;
+                    margin-bottom: 1px;
+                  }
+
+                  & .normal {
+                    color: #eeeeee;
+                    margin-right: 5px;
+                    padding: 0px 10px;
+                    background: #333333;
+                    border-radius: 20px;
+                    display: inline-block;
+                    margin-top: 2px;
+                    margin-bottom: 1px;
+                  }
+      
+                  & .critical {
+                    color: #eeeeee;
+                    margin-right: 5px;
+                    padding: 0px 10px;
+                    background: #147500;
+                    border-radius: 20px;
+                    display: inline-block;
+                    margin-top: 2px;
+                    margin-bottom: 1px;
+                  }
+      
+                  & .fumble {
+                    color: #eeeeee;
+                    margin-right: 5px;
+                    padding: 0px 10px;
+                    background: #a80000;
+                    border-radius: 40px;
+                    display: inline-block;
+                    margin-top: 2px;
+                    margin-bottom: 1px;
+                  }
+                }
+              }
     
-              & p {
+              & .detailBottom {
                 padding: 3px 5px 5px 5px;
                 border-radius: 10px;
                 background: #eeeeee;
-                border: 1px solid #333333;
-    
-                & .normal,
-                & .mod {
-                  color: #eeeeee;
-                  margin-right: 5px;
-                  padding: 0px 10px;
-                  background: #333333;
-                  border-radius: 20px;
-                  display: inline-block;
-                  margin-top: 2px;
-                }
-    
-                & .critical {
-                  color: #eeeeee;
-                  margin-right: 5px;
-                  padding: 0px 10px;
-                  background: #147500;
-                  border-radius: 20px;
-                  display: inline-block;
-                  margin-top: 2px;
-                }
-    
-                & .fumble {
-                  color: #eeeeee;
-                  margin-right: 5px;
-                  padding: 0px 10px;
-                  background: #a80000;
-                  border-radius: 40px;
-                  display: inline-block;
-                  margin-top: 2px;
+                border: 1px solid #33333380;
+
+                & p {
+                  & .mod {
+                    color: #eeeeee;
+                    margin-right: 5px;
+                    padding: 0px 10px;
+                    background: #333333;
+                    border-radius: 20px;
+                    display: inline-block;
+                    margin-top: 2px;
+                    margin-bottom: 1px;
+                  }
                 }
               }
             }

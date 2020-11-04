@@ -3,10 +3,6 @@ import React from 'react';
 const HelpModal = () => {
   return (
     <div id='help'>
-      <div className='descBox'>
-        <div style={{ flex: '1 1 0' }}></div>
-        <p className='helpDesc'>도움말</p>
-      </div>
       <input type='checkbox' id='modal'/>
       <label htmlFor='modal' className='fas fa-question-circle modalbutton' />
       <div className='modalLayer'>
@@ -22,15 +18,20 @@ const HelpModal = () => {
             </p>
             <p className='motelText'>
               <i className='fas fa-chevron-circle-right'></i>
-              입력칸에 <span>다이스 개수</span><span>d/D</span><span>다이스 면수</span>를 입력하고 엔터를 누르거나 굴리기 버튼을 누르면 다이스를 굴릴 수 있습니다. 다이스 개수는 선택입니다. 적지 않으면 자동으로 1개가 굴려집니다.
+              입력칸에 <span>nDn</span>를 입력하고 엔터를 누르거나 굴리기 버튼을 누르면 다이스를 굴릴 수 있습니다. 첫번째 숫자는 개수(선택) 입니다. 두번째 숫자는 면수 입니다.<br /><br />
+              {'> '}<span>20D200</span> = 200면체 20개
             </p>
             <p className='motelText'>
               <i className='fas fa-chevron-circle-right'></i>
-              <span>다이스 개수</span><span>d/D</span><span>다이스 면수</span>바로 뒤에 <span>+추가값</span>형식으로 값을 입력하면 다이스에 해당 값이 더해집니다. 추가값은 여러번 넣을 수 있습니다.
+              <span>nDn</span> 바로 뒤에 <span>+n</span> 형식으로 값을 입력하면 다이스에 해당 값이 더해집니다. 추가값은 여러번 넣을 수 있습니다. <span>nDn</span> 형식의 다이스도 추가할 수 있습니다.
+              <br /><br />
+              {'> '}<span>3D6+4+2D16</span>
             </p>
             <p className='motelText'>
               <i className='fas fa-chevron-circle-right'></i>
-              서로 다른 여러개의 다이스를 굴릴 수 있습니다. <span>다이스 개수</span><span>d/D</span><span>다이스 면수</span>를 입력하고 한 칸 띄고 원하는 값을 더 입력하면 입력한대로 다이스를 동시에 굴립니다.
+              다이스는 +로 이어서 여러번 굴릴 수도 있고 띄어쓰기로 구분해서 굴릴 수도 있습니다.
+              <br /><br />
+              {'> '}<span>2D6 3D6</span> 혹은 <span>2D6+3D6</span>
             </p>
           </div>
         </div>

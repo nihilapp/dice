@@ -35,8 +35,8 @@ const RollDiceForm = () => {
     inputRef.current.focus();
   }, []);
 
-  const onInputDice = useCallback(() => {
-    inputRef.current.value = inputRef.current.value.replace(/[^ㅇd0-9+ ]/gi, '');
+  const onInputDice = useCallback((e) => {
+    e.target.value = e.target.value.replace(/[^ㅇd0-9+ ]/gi, '');
   }, []);
 
   return (
@@ -44,7 +44,7 @@ const RollDiceForm = () => {
       <form id='diceform' onSubmit={onSubmitRollDice}>
         <input
           type='text'
-          placeholder='[ 개수(선택) ][ D(d) ][ 면수 ]+[ 추가값(선택) ]'
+          placeholder='[nDn(필수)]+[nDn/n(선택)]'
           value={values} ref={inputRef}
           onChange={onChangeInputDice}
           onInput={onInputDice}
