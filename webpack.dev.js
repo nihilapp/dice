@@ -15,20 +15,22 @@ module.exports = {
       { // 바벨 로더
         test: /\.jsx?/,
         exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: [[
-              '@babel/preset-env', {
-                targets: {
-                  esmodules: true
-                }
-              }],
-              '@babel/preset-react'
-            ],
-            plugins: ['react-refresh/babel'],
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              presets: [[
+                '@babel/preset-env', {
+                  targets: {
+                    esmodules: true
+                  }
+                }],
+                '@babel/preset-react'
+              ],
+              plugins: ['react-refresh/babel'],
+            }
           }
-        }
+        ],
       },
       { // css와 스타일에 관련된 로더들
         test: [/\.s[ac]ss$/i, /\.css$/i],
