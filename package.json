@@ -1,13 +1,12 @@
 {
-  "name": "dice-roll",
+  "name": "the-dice-roll",
   "version": "3.5.0",
   "description": "roll dice app",
   "main": "main.js",
   "repository": "git@github.com:NIHILncunia/DiceRoll.git",
   "scripts": {
-    "dev": "webpack --config webpack.dev.js",
-    "prod": "webpack --config webpack.prod.js",
-    "serve": "webpack serve --config webpack.dev.js"
+    "serve": "webpack serve --config webpack.dev.js",
+    "prod": "webpack --config webpack.prod.js"
   },
   "keywords": [],
   "author": "NIHILncunia",
@@ -26,7 +25,7 @@
     "@pmmmwh/react-refresh-webpack-plugin": "^0.4.3",
     "babel-loader": "^8.1.0",
     "css-loader": "^5.0.1",
-    "eslint": "^7.12.1",
+    "eslint": "^7.13.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-react": "^7.21.5",
     "eslint-plugin-react-hooks": "^4.2.0",
