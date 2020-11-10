@@ -3,7 +3,14 @@
   "version": "3.5.0",
   "description": "roll dice app",
   "main": "main.js",
-  "repository": "git@github.com:NIHILncunia/DiceRoll.git",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com:TheDiceRoll/TheDiceRoll.github.io.git"
+  },
+  "bugs": {
+    "url": "https://github.com:TheDiceRoll/TheDiceRoll.github.io/issues"
+  },
+  "homepage": "https://github.com:TheDiceRoll/TheDiceRoll.github.io#readme",
   "scripts": {
     "serve": "webpack serve --config webpack.dev.js",
     "prod": "webpack --config webpack.prod.js"
@@ -23,7 +30,7 @@
     "@babel/preset-env": "^7.12.1",
     "@babel/preset-react": "^7.12.5",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.4.3",
-    "babel-loader": "^8.1.0",
+    "babel-loader": "^8.2.1",
     "css-loader": "^5.0.1",
     "eslint": "^7.13.0",
     "eslint-plugin-import": "^2.22.1",
