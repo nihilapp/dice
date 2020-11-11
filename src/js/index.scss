@@ -10,20 +10,17 @@ $smallest-size: 12pt;
 
 @media (min-width: 801px) {
   #topdicebox {
-    & .topdices:nth-child(1) {border-radius: 10px 0px 0px 10px;}
-    & .topdices:nth-last-child(1) {border-radius: 0px 10px 10px 0px;}
     & .topdices {
       font-size: $small-size;
       width: calc(12.5% - 2px);
     }
   }
   #diceform {
-    width: calc(100% - 20px);
+    width: 100%;
     display: flex;
     flex-direction: row;
 
     & :nth-child(1) {
-      border-radius: 10px 0px 0px 10px;
       margin-right: 2px;
       width: 100%;
       flex: 3 1 0;
@@ -35,10 +32,6 @@ $smallest-size: 12pt;
   
     & :nth-child(3) {
       margin-right: 2px;
-    }
-  
-    & :nth-child(4) {
-      border-radius: 0px 10px 10px 0px;
     }
     
     & select {font-size: $big-size;}
@@ -73,27 +66,23 @@ $smallest-size: 12pt;
 
 @media (min-width: 451px) and (max-width: 800px) {
   #topdicebox {
-    & .topdices:nth-child(1) {border-radius: 10px 0px 0px 10px;}
-    & .topdices:nth-last-child(1) {border-radius: 0px 10px 10px 0px;}
     & .topdices {
       font-size: $smallest-size;
       width: calc(12.5% - 2px);
     }
   }
   #diceform {
-    width: calc(100% - 20px);
+    width: 100%;
     overflow: hidden;
 
     & :nth-child(1) {
-      border-radius: 10px 10px 0px 0px;
       margin: 0px 0px 2px 0px;
       font-size: $middle-size;
       display: block;
-      width: calc(100% - 12px);
+      width: 100%;
     }
 
     & :nth-child(2) {
-      border-radius: 0px 0px 0px 10px;
       margin-right: 2px;
       float: left;
       box-sizing: border-box;
@@ -108,7 +97,6 @@ $smallest-size: 12pt;
     }
   
     & :nth-child(4) {
-      border-radius: 0px 0px 10px 0px;
       float: left;
       box-sizing: border-box;
       width: calc(33.33% - 1px);
@@ -145,26 +133,20 @@ $smallest-size: 12pt;
 
 @media (min-width: 101px) and (max-width: 450px) {
   #topdicebox {
-    & .topdices:nth-child(1) {border-radius: 10px 0px 0px 0px;}
-    & .topdices:nth-child(4) {border-radius: 0px 10px 0px 0px;}
-    & .topdices:nth-child(5) {border-radius: 0px 0px 0px 10px;}
-    & .topdices:nth-child(8) {border-radius: 0px 0px 10px 0px;}
     & .topdices {width: calc(25% - 2px);}
   }
   #diceform {
-    width: calc(100% - 20px);
+    width: 100%;
     overflow: hidden;
 
     & :nth-child(1) {
-      border-radius: 10px 10px 0px 0px;
       margin: 0px 0px 2px 0px;
       font-size: $small-size;
       display: block;
-      width: calc(100% - 12px);
+      width: 100%;
     }
 
     & :nth-child(2) {
-      border-radius: 0px 0px 0px 10px;
       margin-right: 2px;
       float: left;
       box-sizing: border-box;
@@ -179,7 +161,6 @@ $smallest-size: 12pt;
     }
   
     & :nth-child(4) {
-      border-radius: 0px 0px 10px 0px;
       float: left;
       box-sizing: border-box;
       width: calc(33.33% - 1px);
@@ -220,14 +201,22 @@ $smallest-size: 12pt;
   font-family: 'Noto Sans KR', sans-serif;
 }
 
+input, button, select {
+  border-radius: 20px;
+}
+
+input:focus,
+button:focus {
+  outline: none;
+}
+
 #diceControl {
-  margin-bottom: 20px;
+  background: #dddddd;
+  padding: 10px;
 }
 
 // 상단 주사위
 #topdicebox {
-  padding: 10px;
-  max-width: calc(100% - 20px);
   display: block;
   overflow: hidden;
 
@@ -256,7 +245,8 @@ $smallest-size: 12pt;
 
 // 중앙 주사위 입력
 #diceform {
-  padding: 10px;
+  box-sizing: border-box;
+  margin-top: 10px;
 
   & select {
     padding: 0px 5px;
@@ -268,11 +258,14 @@ $smallest-size: 12pt;
 
   & input {
     text-align: center;
-    padding: 1px 5px;
-    border: 1px solid #333333;
+    padding: 5px 10px;
+    background: #666666;
+    color: #eeeeee;
+    border: none;
+    box-sizing: border-box;
 
-    & ::placeholder {
-      color: #888888;
+    &::placeholder {
+      color: #eeeeee;
     }
   }
 
@@ -296,8 +289,8 @@ $smallest-size: 12pt;
 }
 
 #help {
-  padding: 10px 10px 10px 10px;
   text-align: right;
+  margin-top: 10px;
 
   & .modalbutton {
     background: #333333;
