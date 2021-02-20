@@ -57,6 +57,7 @@ $smallest-size: 12pt;
               & .message {font-size: $small-size;}
             }
             & .dicedetail {font-size: $small-size;}
+            & .total {font-size: $biggest-size;}
           }
         }
       }
@@ -124,6 +125,7 @@ $smallest-size: 12pt;
               & .message {font-size: $smallest-size;}
             }
             & .dicedetail {font-size: $smallest-size;}
+            & .total {font-size: $biggest-size;}
           }
         }
       }
@@ -188,6 +190,7 @@ $smallest-size: 12pt;
               & .message {font-size: $smallest-size;}
             }
             & .dicedetail {font-size: $smallest-size;}
+            & .total {font-size: $big-size;}
           }
         }
       }
@@ -296,11 +299,13 @@ select:focus {
   & .modalbutton {
     background: #333333;
     color: #eeeeee;
-    padding: 10px;
+    padding: 5px 10px;
     font-size: $big-size;
     border-radius: 50px;
     box-sizing: border-box;
     border: 1px solid #333333;
+    text-align: right;
+    display: inline-block;
 
     &:before {
       content: '도움말';
@@ -309,6 +314,8 @@ select:focus {
     &:after {
       content: '\f059';
       margin-left: 5px;
+      font-weight: 900;
+      font-family: "Font Awesome 5 Free";
     }
 
     &:hover {
@@ -414,11 +421,24 @@ select:focus {
             width: 100%;
             margin-top: 10px;
 
+            &:nth-child(1) {
+              margin-top: 0px;
+            }
+
             & .itemdice {
               align-items: center;
               margin-bottom: 5px;
               font-weight: 900;
               color: #333333;
+
+              & > p {
+                &:before {
+                  content: '\f6cf';
+                  font-family: "Font Awesome 5 Free";
+                  font-weight: 900;
+                  margin-right: 5px;
+                }
+              }
             }
         
             & .dicedetail {
@@ -450,6 +470,13 @@ select:focus {
                     border-radius: 10px;
                     margin-right: 5px;
                     margin-bottom: 1px;
+
+                    &:after {
+                      content: '\f138';
+                      font-family: "Font Awesome 5 Free";
+                      font-weight: 900;
+                      margin-left: 5px;
+                    }
                   }
 
                   & .normal {
@@ -507,6 +534,13 @@ select:focus {
                 }
               }
             }
+          }
+
+          & .total {
+            text-align: justify;
+            font-weight: 900;
+            color: #333333;
+            margin-bottom: 5px;
           }
         }
       }

@@ -11,7 +11,6 @@ const Dicereduser = (state, action) => {
   switch (action.type) {
     case ROLL_DICE: {
       let rolldicedetails = [];
-      let totalArray = [];
 
       // 값을 분리한다.
       const value = action.value.split(' ');
@@ -231,8 +230,7 @@ const Dicereduser = (state, action) => {
             detailItem = (
               <p key={uuid()} className='topItme'>
                 <span className='diceName'>
-                  {`${dice} `}
-                  <i className='fas fa-chevron-circle-right'></i>
+                  {dice}
                 </span>
                 {spanbox}
               </p>
@@ -245,7 +243,7 @@ const Dicereduser = (state, action) => {
             mod = newValues[xx];
 
             modSpan = (
-              <span key={uuid()} className='mod'>{'+ '}{mod}</span>
+              <span key={uuid()} className='mod'>{'+'}{mod}</span>
             );
 
             modSpanArray.push(modSpan);
@@ -253,9 +251,14 @@ const Dicereduser = (state, action) => {
           }
         }
 
+        dicetotal = dicebox.reduce((pre, crr) => { return Number(pre) + Number(crr); }, 0);
+        modTotal = modArray ? modArray.reduce((pre, crr) => { return Number(pre) + Number(crr); }, 0) : 0;
+        dicetotal = dicetotal + modTotal;
+
         rolldetail = (
           <div className='rolldetail' key={uuid()}>
-            <div className='itemdice'><p><i className="fas fa-dice-d20"></i> {newValue}</p></div>
+            <div className='total'>{dicetotal}</div>
+            <div className='itemdice'><p>{newValue}</p></div>
             <div className='dicedetail'>
               <div className='detailTop'>
                 {detailItemArray.map(item => (
@@ -279,20 +282,13 @@ const Dicereduser = (state, action) => {
         );
         
         rolldicedetails.push(rolldetail);
-  
-        dicetotal = dicebox.reduce((pre, crr) => { return Number(pre) + Number(crr); }, 0);
-        modTotal = modArray ? modArray.reduce((pre, crr) => { return Number(pre) + Number(crr); }, 0) : 0;
-        dicetotal = dicetotal + modTotal;
-        totalArray.push(dicetotal);
         
         modSpanArray = [];
       }
 
-      totalArray = totalArray.reduce((pre, crr) => { return pre + crr; }, 0);
-
       return [
         ...state, {
-          TotalDice: totalArray,
+          TotalDice: [],
           dicedetails: rolldicedetails,
         }
       ];

@@ -96,6 +96,12 @@ $xsmall: 11pt;
         border-radius: 10px;
         padding: 5px 10px;
 
+        &:before {
+          content: '\f00d';
+          font-weight: 900;
+          font-family: "Font Awesome 5 Free";
+        }
+
         &:hover {
           color: #333333;
           background: #888888;
@@ -122,7 +128,10 @@ $xsmall: 11pt;
         border-radius: 10px;
         border: 1px solid #333333;
 
-        & i {
+        &:before {
+          content: '\f138';
+          font-weight: 900;
+          font-family: "Font Awesome 5 Free";
           margin-right: 5px;
         }
 
