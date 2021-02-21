@@ -238,12 +238,34 @@ const Dicereduser = (state, action) => {
 
             detailItemArray.push(detailItem);
             spanbox = [];
+          } else if (newValues[xx].includes('-')) {
+            // 값에 -가 있으면 패널티 추가값으로 분류.
+            mod = Number(newValues[xx]);
+
+            modSpan = (
+              <span key={uuid()} className='penaltyMod'>{mod}</span>
+            );
+
+            modSpanArray.push(modSpan);
+            modArray.push(mod);
+          } else if (newValues[xx].includes('none')) {
+            const error = (
+              <div key={uuid()} className='error'>
+                <p className='message'>굴릴 주사위를 선택해야합니다.</p>
+              </div>
+            );
+            return [
+              ...state, {
+                TotalDice: '에러 7',
+                dicedetails: [error],
+              }
+            ];
           } else {
             // 값에 D가 없으면 추가값으로 분류.
             mod = newValues[xx];
 
             modSpan = (
-              <span key={uuid()} className='mod'>{'+'}{mod}</span>
+              <span key={uuid()} className='bonusMod'>{'+'}{mod}</span>
             );
 
             modSpanArray.push(modSpan);

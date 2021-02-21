@@ -10,9 +10,9 @@ $smallest-size: 12pt;
 
 @media (min-width: 801px) {
   #topdicebox {
-    & .topdices {
-      font-size: $small-size;
-      width: calc(12.5% - 2px);
+    & > select,
+    & > button {
+      font-size: $middle-size;
     }
   }
   #diceform {
@@ -34,9 +34,9 @@ $smallest-size: 12pt;
       margin-right: 2px;
     }
     
-    & select {font-size: $big-size;}
-    & input {font-size: $big-size;}
-    & button {font-size: $big-size;}
+    & select {font-size: $middle-size;}
+    & input {font-size: $middle-size;}
+    & button {font-size: $middle-size;}
   }
   #resultListBox {
     height: calc(100vh - 194px - 20px);
@@ -67,9 +67,9 @@ $smallest-size: 12pt;
 
 @media (min-width: 451px) and (max-width: 800px) {
   #topdicebox {
-    & .topdices {
-      font-size: $smallest-size;
-      width: calc(12.5% - 2px);
+    & > select,
+    & > button {
+      font-size: $small-size;
     }
   }
   #diceform {
@@ -103,8 +103,8 @@ $smallest-size: 12pt;
       width: calc(33.33% - 1px);
     }
 
-    & select {font-size: $middle-size;}
-    & button {font-size: $middle-size;}
+    & select {font-size: $small-size;}
+    & button {font-size: $small-size;}
   }
   #resultListBox {
     height: calc(100vh - 228px - 20px);
@@ -134,9 +134,6 @@ $smallest-size: 12pt;
 }
 
 @media (min-width: 101px) and (max-width: 450px) {
-  #topdicebox {
-    & .topdices {width: calc(25% - 2px);}
-  }
   #diceform {
     width: 100%;
     overflow: hidden;
@@ -205,7 +202,7 @@ $smallest-size: 12pt;
 }
 
 input, button, select {
-  border-radius: 20px;
+  border-radius: 5px;
 }
 
 input:focus,
@@ -217,18 +214,35 @@ select:focus {
 #diceControl {
   background: #dddddd;
   padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  border-bottom: 5px solid #cccccc;
 }
 
 // 상단 주사위
 #topdicebox {
-  display: block;
-  overflow: hidden;
+  box-sizing: inherit;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 
-  & .topdices {
-    display: block;
-    float: left;
+  & > select {
+    box-sizing: border-box;
+    text-align-last: center;
+    padding: 5px 10px;
+    border: none;
+    background: #333333;
+    color: #eeeeee;
+    margin-right: 2px;
+    display: inline-block;
+    flex: 1;
+  }
+
+  & > button {
+    box-sizing: border-box;
+    display: inline-block;
     text-align: center;
-    padding: 5px;
+    padding: 5px 10px;
     margin: 1px;
     border: 1px solid #333333;
     background: #333333;
@@ -301,7 +315,7 @@ select:focus {
     color: #eeeeee;
     padding: 5px 10px;
     font-size: $big-size;
-    border-radius: 50px;
+    border-radius: 5px;
     box-sizing: border-box;
     border: 1px solid #333333;
     text-align: right;
@@ -334,6 +348,8 @@ select:focus {
 // 하단 주사위 결과 리스트
 #diceresultlist {
   padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
 
   & .diceresultitem:nth-child(1):before {
     content: '\f061';
@@ -391,6 +407,7 @@ select:focus {
           font-weight: 900;
           color: #333333;
           flex: 1 1 0;
+          max-width: 100%;
         }
       }
 
@@ -432,6 +449,8 @@ select:focus {
               color: #333333;
 
               & > p {
+                word-break: break-all;
+
                 &:before {
                   content: '\f6cf';
                   font-family: "Font Awesome 5 Free";
@@ -480,36 +499,36 @@ select:focus {
                   }
 
                   & .normal {
-                    color: #eeeeee;
                     margin-right: 5px;
-                    padding: 0px 10px;
                     background: #333333;
-                    border-radius: 20px;
                     display: inline-block;
                     margin-top: 2px;
                     margin-bottom: 1px;
+                    padding: 0px 7px 2px 7px;
+                    color: #eeeeee;
+                    border-radius: 10px;
                   }
       
                   & .critical {
-                    color: #eeeeee;
                     margin-right: 5px;
-                    padding: 0px 10px;
                     background: #147500;
-                    border-radius: 20px;
                     display: inline-block;
                     margin-top: 2px;
                     margin-bottom: 1px;
+                    padding: 0px 7px 2px 7px;
+                    color: #eeeeee;
+                    border-radius: 10px;
                   }
       
                   & .fumble {
-                    color: #eeeeee;
                     margin-right: 5px;
-                    padding: 0px 10px;
                     background: #a80000;
-                    border-radius: 40px;
                     display: inline-block;
                     margin-top: 2px;
                     margin-bottom: 1px;
+                    padding: 0px 7px 2px 7px;
+                    color: #eeeeee;
+                    border-radius: 10px;
                   }
                 }
               }
@@ -521,15 +540,22 @@ select:focus {
                 border: 1px solid #33333380;
 
                 & p {
-                  & .mod {
-                    color: #eeeeee;
+                  & span {
                     margin-right: 5px;
-                    padding: 0px 10px;
-                    background: #333333;
-                    border-radius: 20px;
-                    display: inline-block;
                     margin-top: 2px;
                     margin-bottom: 1px;
+                    display: inline-block;
+                    color: #eeeeee;
+                    border-radius: 10px;
+                    padding: 0px 7px 2px 7px;
+                  }
+
+                  & .bonusMod {
+                    background: #147500;
+                  }
+
+                  & .penaltyMod {
+                    background: #a80000;
                   }
                 }
               }

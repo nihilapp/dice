@@ -32,11 +32,12 @@ const RollDiceForm = () => {
     });
 
     setValues('');
+    document.getElementById('top-button-select').value = 'none';
     inputRef.current.focus();
   }, []);
 
   const onInputDice = useCallback((e) => {
-    e.target.value = e.target.value.replace(/[^ㅇd0-9+ ]/gi, '');
+    e.target.value = e.target.value.replace(/[^ㅇd0-9-+ ]/gi, '');
   }, []);
 
   return (
