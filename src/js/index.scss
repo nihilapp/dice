@@ -38,10 +38,6 @@ $smallest-size: 12pt;
     & input {font-size: $middle-size;}
     & button {font-size: $middle-size;}
   }
-  #resultListBox {
-    height: calc(100vh - 194px - 20px);
-    overflow: auto;
-  }
   #diceresultlist {
     & .diceresultitem:nth-child(1):before,
     & .diceresultitem:before {font-size: $biggest-size;}
@@ -106,10 +102,6 @@ $smallest-size: 12pt;
     & select {font-size: $small-size;}
     & button {font-size: $small-size;}
   }
-  #resultListBox {
-    height: calc(100vh - 228px - 20px);
-    overflow: auto;
-  }
   #diceresultlist {
     & .diceresultitem:nth-child(1):before,
     & .diceresultitem:before {font-size: $biggest-size;}
@@ -168,10 +160,6 @@ $smallest-size: 12pt;
     & select {font-size: $small-size;}
     & button {font-size: $small-size;}
   }
-  #resultListBox {
-    height: calc(100vh - 240px - 20px);
-    overflow: auto;
-  }
   #diceresultlist {
     & .diceresultitem:nth-child(1):before,
     & .diceresultitem:before {font-size: $big-size;}
@@ -209,6 +197,21 @@ input:focus,
 button:focus,
 select:focus {
   outline: none;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+}
+
+#resultListBox {
+  flex: 1;
+  overflow-y: scroll;
+  width: 100%;
 }
 
 #diceControl {
