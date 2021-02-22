@@ -210,8 +210,24 @@ html, body, #root {
 
 #resultListBox {
   flex: 1;
-  overflow-y: scroll;
+  overflow-y: auto;
   width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+
+  &::-webkit-scrollbar {
+    width: 20px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #333333;
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #33333380;
+    border-radius: 10px;
+  }
 }
 
 #diceControl {
@@ -350,7 +366,6 @@ html, body, #root {
 
 // 하단 주사위 결과 리스트
 #diceresultlist {
-  padding: 10px;
   width: 100%;
   box-sizing: border-box;
 
