@@ -8,7 +8,7 @@ const initialState = [{
   dicedetails: [],
 }];
 
-const suffixs = ['2', '4', '6', '8', '10', '12', '20', '100'];
+const suffixs = ['D2', 'D4', 'D6', 'D8', 'D10', 'D12', 'D20', 'D100', '3D6'];
 
 const DiceContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(Dicereduser, initialState);

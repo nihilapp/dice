@@ -44,6 +44,7 @@ const RollDiceForm = () => {
     <>
       <form id='diceform' onSubmit={onSubmitRollDice}>
         <input
+          id='dice-roll-input'
           type='text'
           placeholder='[nDn(필수)]+[nDn/n(선택)]'
           value={values} ref={inputRef}

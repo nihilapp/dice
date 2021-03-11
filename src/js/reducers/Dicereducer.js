@@ -1,10 +1,8 @@
 import React from 'react';
-import uuid from 'uuid/v4';
+import { v4 as uuid } from 'uuid';
 
 export const DICE_BUTTON = 'DICE_BUTTON';
 export const ROLL_DICE = 'ROLL_DICE';
-export const SAVE_DICE = 'SAVE_DICE';
-export const REMOVE_DICE = 'REMOVE_DICE';
 export const RESET_FORM = 'RESET_FORM';
 
 const Dicereduser = (state, action) => {
@@ -320,10 +318,6 @@ const Dicereduser = (state, action) => {
         TotalDice: '다이스를 굴리세요.',
         dicedetails: [],
       }];
-    case SAVE_DICE:
-      break;
-    case REMOVE_DICE:
-      break;
     default:
       return state;
   }

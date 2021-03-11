@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import uuid from 'uuid/v4';
+import { v4 as uuid } from 'uuid';
 import { DiceContext } from '../contexts/DiceContext';
 
 const DiceResults = () => {
