@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://thediceroll.github.io/</loc>
+    <loc>https://nihilapp.github.io/dice/</loc>
     <changefreq>daily</changefreq>
     <priority>1</priority>
   </url>
 
   <url>
-    <loc>https://thediceroll.github.io/preset</loc>
+    <loc>https://nihilapp.github.io/dice/preset</loc>
     <changefreq>daily</changefreq>
     <priority>1</priority>
   </url>
 
   <url>
-    <loc>https://thediceroll.github.io/custom</loc>
+    <loc>https://nihilapp.github.io/dice/custom</loc>
     <changefreq>daily</changefreq>
     <priority>1</priority>
   </url>
